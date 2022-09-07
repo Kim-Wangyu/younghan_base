@@ -1,5 +1,6 @@
 package com.tys.young_spring;
 
+import com.tys.young_spring.aop.TimeTraceAop;
 import com.tys.young_spring.repository.*;
 import com.tys.young_spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,8 @@ public class SpringConfig {
 
         return new MemberService(memberRepository); //생성자() 지우고 바꿈
     }
+
+
 
  //   @Bean
   //  public MemberRepository memberRepository(){
