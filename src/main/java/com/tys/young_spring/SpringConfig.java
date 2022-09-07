@@ -12,13 +12,21 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private EntityManager em;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
+    //@@@@@@@@@@@@@@@
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
+//@@@@@@@@@@@@@@@@@@@위,아래 다른것
 //    private DataSource dataSource;
 //
 //    @Autowired
@@ -29,16 +37,17 @@ public class SpringConfig {
     @Bean   // 이렇게 하면 스프링 빈에서 어? 이거 스프링 빈에 넣으라는 소리네 하고 인식함
     public MemberService memberService() {
 
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository); //생성자() 지우고 바꿈
     }
 
-    @Bean
-    public MemberRepository memberRepository(){
+ //   @Bean
+  //  public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
 //        return new JdbcTemplateMemberRepository(dataSource);
         //
-        return new JpaMemberRepository(em);
-    }
+//        return new JpaMemberRepository(em);
+
+  //  }
 
 }
